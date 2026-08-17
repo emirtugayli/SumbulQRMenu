@@ -159,7 +159,7 @@ export const PRODUCT_PROMPTS = [
     id: 'kahvalti-tabagi',
     // İçerik kafeden alındı: domates, salatalık, 1 yumurta, 1 sigara böreği,
     // 1 patates böreği, kaşar, beyaz peynir, bal, tereyağı, zeytin.
-    subject: `A single-serving Turkish breakfast plate ("kahvaltı tabağı") holding EXACTLY these ten items, each appearing one single time, neatly arranged side by side on one large round white plate: sliced ripe tomato, sliced cucumber, one boiled egg cut in half, one slim cigar-shaped golden fried sigara böreği pastry roll, one small golden fried potato-filled börek pastry, one wedge of yellow kasar cheese, one wedge of white brined feta-style cheese, a small portion of honey, a small pat of butter, and a few black olives. A few slices of fresh Turkish bread rest on the table beside the plate. No duplicated items, no extra bowls, no jam, no menemen, nothing beyond this list.`
+    subject: `A single-serving Turkish breakfast plate ("kahvaltı tabağı") holding EXACTLY these ten items, each appearing one single time, neatly arranged side by side on one large round white plate: sliced ripe tomato, sliced cucumber, one sunny-side-up fried egg, one slim cigar-shaped golden fried sigara böreği pastry roll, one small golden fried potato-filled börek pastry, one wedge of yellow kasar cheese, one wedge of white brined feta-style cheese, a small portion of honey, a small pat of butter, and a few black olives. A few slices of fresh Turkish bread rest on the table beside the plate. No duplicated items, no extra bowls, no jam, no menemen, nothing beyond this list.`
   },
   {
     id: 'sade-omlet',
