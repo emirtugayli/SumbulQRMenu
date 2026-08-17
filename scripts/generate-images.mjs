@@ -97,22 +97,42 @@ if (!API_KEY && !LIST_ONLY) {
 
 /* ---------------------------------------------------------------- referans */
 
-/**
- * Referans fotoğrafı küçültüp base64'e çevirir (girdi maliyetini düşürmek için).
- * Bulunamazsa null döner; üretim yalnızca metin tarifiyle devam eder.
- */
-const loadReference = async () => {
-  const file = REFERENCE_CANDIDATES.map((f) => path.join(ROOT, f)).find((p) => fs.existsSync(p));
-  if (!file) return null;
+const referenceCache = new Map();
+
+/** Bir görseli küçültüp Gemini'ye gönderilecek parçaya çevirir (önbellekli). */
+const loadImagePart = async (file) => {
+  if (referenceCache.has(file)) return referenceCache.get(file);
+
   const buf = await sharp(file)
     .rotate()
     .resize({ width: 900, height: 900, fit: 'inside' })
     .jpeg({ quality: 82 })
     .toBuffer();
-  return {
-    name: path.basename(file),
-    part: { inlineData: { mimeType: 'image/jpeg', data: buf.toString('base64') } }
-  };
+
+  const part = { inlineData: { mimeType: 'image/jpeg', data: buf.toString('base64') } };
+  referenceCache.set(file, part);
+  return part;
+};
+
+/**
+ * Kafenin masa fotoğrafını yükler (girdi maliyetini düşürmek için küçültülür).
+ * Bulunamazsa null döner; üretim yalnızca metin tarifiyle devam eder.
+ */
+const loadReference = async () => {
+  const file = REFERENCE_CANDIDATES.map((f) => path.join(ROOT, f)).find((p) => fs.existsSync(p));
+  if (!file) return null;
+  return { name: path.basename(file), part: await loadImagePart(file) };
+};
+
+/**
+ * Ürüne özel ek referans (örn. bir içeceğin gerçek ambalaj fotoğrafı).
+ * `entry.reference` proje köküne göre bir yol; dosya yoksa sessizce atlanır.
+ */
+const loadEntryReference = async (entry) => {
+  if (!entry.reference) return null;
+  const file = path.join(ROOT, entry.reference);
+  if (!fs.existsSync(file)) return null;
+  return await loadImagePart(file);
 };
 
 /* ------------------------------------------------------------------ prompt */
@@ -124,14 +144,20 @@ const angleFor = (id) => {
   return ANGLES[h % ANGLES.length];
 };
 
-const buildPrompt = (entry, kind, withReference) => {
+const buildPrompt = (entry, kind, withReference, withProductReference) => {
   // Markalı içeceklerde logo/yazı yasağı olmayan kamera tarifi kullanılır.
   const camera = entry.camera || (entry.branded ? CAMERA_BRANDED : TARGETS[kind].camera);
   const parts = [];
 
   if (withReference) {
     parts.push(
-      `The attached photograph shows the real table of this cafe. Use it ONLY as a material and setting reference: reproduce that same cream-ivory travertine-look square stone tabletop with its thick layered pale edge, the same honey bamboo-look woven-cane bistro chairs and the same sunny park terrace surroundings. Do NOT copy the reference photo's camera angle, framing or crop, and do not include the ashtray, the table-number card or any clutter from it. Create a brand-new photograph.`
+      `The FIRST attached photograph shows the real table of this cafe. Use it ONLY as a material and setting reference: reproduce that same cream-ivory travertine-look square stone tabletop with its thick layered pale edge, the same honey bamboo-look woven-cane bistro chairs and the same sunny park terrace surroundings. Do NOT copy the reference photo's camera angle, framing or crop, and do not include the ashtray, the table-number card or any clutter from it. Create a brand-new photograph.`
+    );
+  }
+
+  if (withProductReference) {
+    parts.push(
+      `The SECOND attached photograph shows the exact product packaging to depict. Reproduce its label faithfully — same colours, same logo placement, same wording and proportions — but photograph it freshly on the cafe table described below, at a new angle and in natural daylight, not as a flat studio product shot.`
     );
   }
 
@@ -147,8 +173,8 @@ const buildPrompt = (entry, kind, withReference) => {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const callGemini = async (model, prompt, referencePart, aspectRatio) => {
-  const parts = referencePart ? [referencePart, { text: prompt }] : [{ text: prompt }];
+const callGemini = async (model, prompt, referenceParts, aspectRatio) => {
+  const parts = [...referenceParts.filter(Boolean), { text: prompt }];
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`,
     {
@@ -224,7 +250,9 @@ const buildQueue = () => {
 };
 
 const runOne = async (entry, reference) => {
-  const prompt = buildPrompt(entry, entry.kind, Boolean(reference));
+  const productReference = await loadEntryReference(entry);
+  const prompt = buildPrompt(entry, entry.kind, Boolean(reference), Boolean(productReference));
+  const referenceParts = [reference?.part, productReference];
   const { aspectRatio } = TARGETS[entry.kind];
 
   let lastError;
@@ -232,7 +260,7 @@ const runOne = async (entry, reference) => {
     // Son denemede daha güçlü modele geç.
     const model = MODEL_OVERRIDE || (attempt === MAX_ATTEMPTS ? FALLBACK_MODEL : MODEL);
     try {
-      const { buffer } = await callGemini(model, prompt, reference?.part, aspectRatio);
+      const { buffer } = await callGemini(model, prompt, referenceParts, aspectRatio);
 
       fs.mkdirSync(RAW_DIR, { recursive: true });
       fs.writeFileSync(path.join(RAW_DIR, `${entry.id}.jpg`), buffer);

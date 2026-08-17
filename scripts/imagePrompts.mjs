@@ -276,7 +276,9 @@ export const PRODUCT_PROMPTS = [
   {
     id: 'nescafe-original',
     branded: true,
-    subject: `A hot Nescafé instant coffee served in the iconic Nescafé red ceramic mug with the white Nescafé script on its side, medium-brown coffee with a delicate pale foam layer and gentle steam rising, standing on a white saucer with a small spoon; a couple of white sugar cubes on the table.`
+    // Kafede satılan ürün sıcak kahve değil, soğuk Nescafé Xpress kutu kahve.
+    reference: 'referans/nescafe-xpress.jpg',
+    subject: `An ice-cold Nescafé Xpress Original ready-to-drink iced coffee can: a tall slim 250 ml aluminium can with a vivid orange body, the red and white NESCAFÉ logo block at the top, the bold black "Xpress" script across the middle and a red oval "ORIGINAL" badge below it, silver rim and pull tab. The can stands upright, frosted with heavy condensation and a few water droplets running down, beside a tall clear glass of milky iced coffee poured over ice cubes with a creamy pale head.`
   },
   {
     id: 'red-bull',
