@@ -40,9 +40,8 @@
    * Sticky katmanların yüksekliği App.tsx içinde ölçülüp buraya yazılır.
    * Böylece büyük yazı modunda arama ve kategori çubuğu üst üste binmez.
    */
-  --sticky-search-top: 65px;
-  --sticky-nav-top: 125px;
-  --sticky-total: 205px;
+  --sticky-search-top: 64px;
+  --sticky-total: 140px;
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -100,63 +99,55 @@ body {
   }
 }
 
-/* Header */
-.header {
+/* Kategori ve ürün ekranlarındaki ince üst şerit (geri + yazı boyutu) */
+.top-bar {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: var(--bg-warm-ivory);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1.5px solid var(--border-color);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 10px 16px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
 }
 
-.header-brand {
+.top-bar-back {
   display: flex;
   align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
+  gap: 2px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--primary-burgundy);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 16px 8px 10px;
+  min-height: var(--touch-target-min);
+  cursor: pointer;
+  transition: var(--transition-fast);
 }
 
-.header-logo {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  background: #FFF;
-  padding: 2px;
-  border: 1px solid var(--border-color);
+.top-bar-back:active {
+  background-color: var(--primary-burgundy-light);
 }
 
-.header-title-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.header-title {
+.top-bar-title {
+  flex: 1;
+  text-align: center;
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--primary-burgundy);
-  line-height: 1.1;
-}
-
-.header-subtitle {
-  font-size: 0.88rem;
-  color: var(--secondary-olive);
-  font-weight: 600;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  line-height: 1.15;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .text-size-btn {
@@ -181,27 +172,64 @@ body {
   border-color: var(--primary-burgundy);
 }
 
-/* Hero Section */
+/* Hero Section — açılış ekranı, tek net eylemle */
 .hero {
-  padding: 18px 16px 14px 16px;
+  padding: 12px 16px 22px 16px;
   text-align: center;
   background: linear-gradient(180deg, #F7F1E5 0%, #EFE5D5 100%);
   border-bottom: 1px solid var(--border-color);
 }
 
-.hero-logo-large {
-  width: 95px;
-  height: 95px;
-  object-fit: contain;
-  margin: 0 auto 8px auto;
+.hero-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
 }
 
-.hero-title {
-  font-size: 1.8rem;
+/* Kafe adı logonun üzerinde yazdığı için ayrıca başlık kullanılmıyor. */
+.hero-logo-large {
+  width: min(78vw, 300px);
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 12px auto;
+  display: block;
+}
+
+.hero-hours {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--secondary-olive);
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 18px;
+  padding: 18px 22px;
+  background-color: var(--primary-burgundy);
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: var(--primary-burgundy);
-  margin-bottom: 2px;
-  font-family: var(--font-serif);
+  min-height: 64px;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.hero-cta:active {
+  background-color: var(--primary-burgundy-hover);
+  transform: translateY(1px);
 }
 
 .hero-badge {
@@ -321,49 +349,46 @@ body {
   text-align: center;
 }
 
-/* Category Sticky Nav Bar */
-.category-nav-wrapper {
-  position: sticky;
-  top: var(--sticky-nav-top);
-  z-index: 98;
-  background-color: var(--bg-warm-ivory);
-  border-bottom: 1.5px solid var(--border-color);
-  padding: 8px 0;
-  box-shadow: var(--shadow-sm);
-}
-
-.category-nav {
-  display: flex;
-  overflow-x: auto;
-  gap: 8px;
-  padding: 0 16px;
-  scrollbar-width: none;
-}
-
-.category-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.category-tab {
-  white-space: nowrap;
-  background-color: var(--bg-surface);
+/* Arama sonuçlarında kategori başlığı — dokununca o kategoriye gider */
+.search-group-heading {
+  display: block;
+  width: 100%;
+  background-color: var(--primary-burgundy-light);
   border: 1.5px solid var(--border-color);
-  color: var(--text-dark);
-  padding: 10px 18px;
-  border-radius: var(--radius-full);
-  font-size: 1rem;
-  font-weight: 700;
+  border-radius: var(--radius-md);
+  color: var(--primary-burgundy);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  min-height: var(--touch-target-min);
+  text-align: center;
   cursor: pointer;
+}
+
+/* Kategori ürünlerinin altındaki geri dönüş butonu */
+.back-to-categories {
   display: flex;
   align-items: center;
-  gap: 7px;
-  min-height: var(--touch-target-min);
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--primary-burgundy);
+  border-radius: var(--radius-full);
+  color: var(--primary-burgundy);
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 16px 20px;
+  min-height: 60px;
+  cursor: pointer;
+  transition: var(--transition-fast);
 }
 
-.category-tab.active {
-  background-color: var(--primary-burgundy);
-  color: var(--text-white);
-  border-color: var(--primary-burgundy);
+.back-to-categories:active {
+  background-color: var(--primary-burgundy-light);
 }
 
 /* ==========================================================================
@@ -401,9 +426,10 @@ body {
   }
 }
 
+/* Kategori kartları artık menünün ana navigasyonu — bilinçli olarak büyük. */
 .category-grid-card {
   position: relative;
-  height: 152px;
+  height: 172px;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1.5px solid var(--border-color);
@@ -562,6 +588,12 @@ body {
   width: 100%;
 }
 
+/* Logolar da <picture> içinde; ortalanabilmesi için blok olmalı. */
+.hero picture,
+.footer picture {
+  display: block;
+}
+
 /* Product Details on Right (Matching Image 2) */
 .product-item-details {
   flex: 1;
@@ -704,14 +736,24 @@ body {
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
   margin-bottom: 16px;
 }
 
+/* Hem <a> hem <button> olarak kullanılıyor; ikisi de aynı görünsün. */
 .footer-link {
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  min-height: var(--touch-target-min);
   color: #FAF5EB;
+  font-family: inherit;
+  font-size: 1rem;
   text-decoration: underline;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .footer-copy {

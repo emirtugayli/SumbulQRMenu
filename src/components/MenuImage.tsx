@@ -17,7 +17,7 @@ export const MenuImage: React.FC<MenuImageProps> = ({ sources, alt, className, e
   <picture>
     <source srcSet={sources.webp} type="image/webp" />
     <img
-      src={sources.jpg}
+      src={sources.fallback}
       alt={alt}
       className={className}
       loading={eager ? 'eager' : 'lazy'}

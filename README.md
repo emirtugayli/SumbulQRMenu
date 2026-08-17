@@ -12,6 +12,20 @@ npm run build    # dist/ klasörüne production çıktısı
 npm run preview  # build çıktısını yerelde sunar
 ```
 
+## Müşteri akışı
+
+QR kodu okutan müşteri üç adımda ilerler ([`src/App.tsx`](src/App.tsx) içindeki
+`view` durumu):
+
+1. **Açılış** — büyük Sümbül Cafe logosu, çalışma saati ve tek bir net buton:
+   "Menüye Devam Et". Kafe adı logonun üzerinde yazdığı için ayrıca başlık yok.
+2. **Kategoriler** — 8 büyük kategori kartı ve arama alanı.
+3. **Kategori** — seçilen kategorinin ürünleri; üstte "Kategoriler" geri butonu,
+   listenin sonunda "Diğer Kategoriler".
+
+Sabit bir üst başlık ya da kaydırmalı kategori çubuğu bulunmaz; ekranın tamamı
+menüye ayrılmıştır.
+
 ## Menü içeriği
 
 Tüm kategoriler, ürünler, açıklamalar ve fiyatlar tek dosyada:
@@ -64,8 +78,9 @@ ilgili tariflerden `branded: true` satırını kaldırmanız yeterlidir.
 
 Menü orta yaş ve üzeri kullanıcılar düşünülerek tasarlandı:
 
-- 19 px temel yazı boyutu, başlıkta tek dokunuşla açılan büyük yazı modu (23 px)
-- En az 48 px dokunma hedefleri
+- 19 px temel yazı boyutu, her ekranda tek dokunuşla açılan büyük yazı modu (23 px)
+- En az 48 px dokunma hedefleri, 64 px'lik ana buton
 - Yüksek kontrastlı fiyat ve ürün adları, 132 px ürün fotoğrafları
-- Sabit üst katmanların yükseklikleri çalışma anında ölçülür; yazı büyütülünce
-  arama ve kategori çubuğu üst üste binmez
+- Sabit üst şeridin yüksekliği çalışma anında ölçülür; yazı büyütülünce arama
+  alanı ve içerik üst üste binmez
+- Logo mobil veri için 3.2 MB'tan 98 KB'ye küçültüldü (webp + png)

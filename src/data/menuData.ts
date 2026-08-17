@@ -295,13 +295,20 @@ export const MENU_CATEGORIES: MenuCategory[] = [
  */
 export interface ImageSources {
   webp: string;
-  jpg: string;
+  /** Webp desteklemeyen eski cihazlar için jpg/png sürümü. */
+  fallback: string;
 }
 
 const withExtensions = (basePath: string): ImageSources => ({
   webp: `${basePath}.webp`,
-  jpg: `${basePath}.jpg`
+  fallback: `${basePath}.jpg`
 });
+
+/** Kafe logosu (mobil için küçültülmüş sürümler). */
+export const LOGO_IMAGE: ImageSources = {
+  webp: '/SumbulLogo.webp',
+  fallback: '/SumbulLogo.png'
+};
 
 export const getMenuItemImage = (item: MenuItem): ImageSources =>
   withExtensions(item.image || `/images/products/${item.id}`);

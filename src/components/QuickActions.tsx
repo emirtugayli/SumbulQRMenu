@@ -2,17 +2,14 @@ import React from 'react';
 import { BookOpen, MapPin, Phone, Instagram } from 'lucide-react';
 import { CAFE_INFO } from '../data/menuData';
 
-export const QuickActions: React.FC = () => {
-  const scrollToMenu = () => {
-    const el = document.getElementById('menu-content');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+interface QuickActionsProps {
+  onOpenMenu: () => void;
+}
 
+export const QuickActions: React.FC<QuickActionsProps> = ({ onOpenMenu }) => {
   return (
     <div className="quick-actions">
-      <button onClick={scrollToMenu} className="quick-action-btn" aria-label="Menüye Git">
+      <button onClick={onOpenMenu} className="quick-action-btn" aria-label="Menüyü Aç">
         <BookOpen />
         <span>Menü</span>
       </button>
