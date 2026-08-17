@@ -1,0 +1,20 @@
+# Ortam değişkenleri — GEMINI_API_KEY burada, asla repoya girmesin
+.env
+.env.*
+!.env.example
+
+# Bağımlılıklar
+node_modules/
+
+# Build çıktısı
+dist/
+
+# Gemini'den gelen ham görseller (public/images altındaki optimize sürümler yeterli)
+scripts/.raw/
+
+# Editör / işletim sistemi
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

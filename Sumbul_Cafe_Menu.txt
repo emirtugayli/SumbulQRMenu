@@ -1,0 +1,230 @@
+SÜMBÜL CAFE — MENÜ
+
+GÖZLEME
+
+Ürün ismi: Patatesli Gözleme Description: Patates dolgulu sac gözleme.
+Fiyat: 250
+
+Ürün ismi: Beyaz Peynirli Gözleme Description: Beyaz peynir dolgulu sac
+gözleme. Fiyat: 250
+
+Ürün ismi: Kaşarlı Gözleme Description: Kaşar peyniri dolgulu sac
+gözleme. Fiyat: 250 TL
+
+Ürün ismi: Sucuk Kaşarlı Gözleme Description: Sucuk ve kaşar peyniri
+dolgulu sac gözleme. Fiyat: 270 TL
+
+Ürün ismi: Kavurma Kaşarlı Gözleme Description: Kavurma ve kaşar peyniri
+dolgulu sac gözleme. Fiyat: 350 TL
+
+KÖFTE & ANA YEMEKLER
+
+Ürün ismi: Kasap Köfte Yarım Ekmek Description: Izgara kasap köfte,
+yarım ekmek içerisinde servis edilir. Fiyat: 250 TL
+
+Ürün ismi: Porsiyon Kasap Köfte Description: Izgara kasap köfte; patates
+kızartması, salata ve pilav ile servis edilir. Fiyat: 400 TL
+
+Ürün ismi: Hamburger Description: Klasik hamburger. Fiyat: 300 TL
+
+Ürün ismi: Tantuni Description: Fiyat: 250 TL
+
+Ürün ismi: Köri Soslu Makarna Description: Fiyat: 270 TL
+
+Ürün ismi: Kremalı Makarna Description: Fiyat: 250 TL
+
+Ürün ismi: Köri Soslu Tavuklu Makarna Description: Tavuk ve köri sos ile
+hazırlanan makarna. Fiyat: 300 TL
+
+Ürün ismi: Kremalı Mantarlı Makarna Description: Krema ve mantar ile
+hazırlanan makarna. Fiyat: 280 TL
+
+Ürün ismi: Mantı Description: Fiyat: 300 TL
+
+ATIŞTIRMALIKLAR
+
+Ürün ismi: Patates Kızartması Description: Fiyat: 150 TL
+
+Ürün ismi: Sigara Böreği Description: Fiyat: 150 TL
+
+TOST ÇEŞİTLERİ
+
+Ürün ismi: Kaşarlı Tost Description: Kaşar peynirli tost, patates
+kızartması ile servis edilir. Fiyat: 170 TL
+
+Ürün ismi: Beyaz Peynirli Tost Description: Beyaz peynirli tost, patates
+kızartması ile servis edilir. Fiyat: 170 TL
+
+Ürün ismi: Sucuklu Tost Description: Sucuklu tost, patates kızartması
+ile servis edilir. Fiyat: 180 TL
+
+Ürün ismi: Kavurma Kaşar Tost Description: Kavurma ve kaşar peynirli
+tost, patates kızartması ile servis edilir. Fiyat: 280 TL
+
+Ürün ismi: Sucuk Kaşar Tost Description: Sucuk ve kaşar peynirli tost,
+patates kızartması ile servis edilir. Fiyat: 200 TL
+
+KAHVALTI
+
+Ürün ismi: Serpme Kahvaltı Description: Bal kaymak, tahin pekmez, reçel,
+acuka, siyah ve yeşil zeytin, peynir tabağı, domates, salatalık, sahanda
+yumurta, sucuk, menemen ve patates. Fiyat: 900 TL
+Ürün ismi: Menemen Description: Domates, biber ve yumurta ile hazırlanan
+geleneksel menemen. Fiyat: 250 TL
+
+Ürün ismi: Kahvaltı Tabağı Description: Fiyat: 400 TL
+
+Ürün ismi: Sade Omlet Description: Fiyat: 125 TL
+
+Ürün ismi: Karışık Omlet Description: Fiyat: 150 TL
+
+TATLILAR
+
+Ürün ismi: Frambuazlı Cheesecake Description: Fiyat: 150
+
+Ürün ismi: Limonlu Cheesecake Description: Fiyat: 150
+
+Ürün ismi: Mozaik Pasta Description: Fiyat: 150
+
+Ürün ismi: Tiramisu Description: Fiyat: 150
+
+SOĞUK İÇECEKLER
+
+Ürün ismi: Su
+Description:
+Fiyat: 20 TL
+
+Ürün ismi: Sade Soda
+Description:
+Fiyat: 40 TL
+
+Ürün ismi: Meyveli Soda
+Description:
+Fiyat: 50 TL
+
+Ürün ismi: Şişe Cola
+Description:
+Fiyat: 70 TL
+
+Ürün ismi: Kutu Cola
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Kutu Fanta
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Kutu Sprite
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Cappy Karışık
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Cappy Kayısı
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Cappy Vişne
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Cappy Şeftali
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Fuse Tea Şeftali
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Fuse Tea Limon
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Fuse Tea Mango
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Fuse Tea Karpuz
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Ice Caramel Latte
+Description:
+Fiyat: 160 TL
+
+Ürün ismi: Ice Latte
+Description:
+Fiyat: 150 TL
+
+Ürün ismi: Ice Americano
+Description:
+Fiyat: 140 TL
+
+Ürün ismi: Nescafe Original
+Description:
+Fiyat: 120 TL
+
+Ürün ismi: Red Bull
+Description:
+Fiyat: 125 TL
+
+
+SICAK İÇECEKLER
+
+Ürün ismi: Çay
+Description:
+Fiyat: 30 TL
+
+Ürün ismi: Fincan Çay
+Description:
+Fiyat: 50 TL
+
+Ürün ismi: Türk Kahvesi
+Description:
+Fiyat: 90 TL
+
+Ürün ismi: Oralet Çeşitleri
+Description:
+Fiyat: 35 TL
+
+Ürün ismi: Bitki Çayları
+Description:
+Fiyat: 75 TL
+
+Ürün ismi: Americano
+Description:
+Fiyat: 100 TL
+
+Ürün ismi: Sütlü Kahve
+Description:
+Fiyat: 120 TL
+
+Ürün ismi: Cappuccino
+Description:
+Fiyat: 120 TL
+
+Ürün ismi: Caffe Latte
+Description:
+Fiyat: 150 TL
+
+Ürün ismi: Espresso
+Description:
+Fiyat: 90 TL
+
+Ürün ismi: Salep
+Description:
+Fiyat: 120 TL
+
+Ürün ismi: Sıcak Süt
+Description:
+Fiyat: 80 TL
+
+Ürün ismi: Karton Bardak Çay
+Description:
+Fiyat: 40 TL
+
+Ürün ismi: Sıcak Çikolata
+Description:
+Fiyat: 120 TL
